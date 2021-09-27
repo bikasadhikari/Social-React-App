@@ -1,9 +1,11 @@
 import React from 'react';
+import './App.css';
+import Home from './pages/home/Home';
 
 const App = () => {
     return (
         <div>
-            <h2>Social media app</h2>
+            <Home/>
         </div>
     );
 }
