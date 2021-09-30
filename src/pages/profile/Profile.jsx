@@ -5,7 +5,7 @@ import Topbar from '../../components/topbar/Topbar';
 import Feed from '../../components/feed/Feed'
 import Rightbar from '../../components/rightbar/Rightbar'
 
-export const Profile = () => {
+const Profile = () => {
     return (
         <>
         <Topbar/>
@@ -31,3 +31,5 @@ export const Profile = () => {
         </>
     )
 }
+
+export default Profile;

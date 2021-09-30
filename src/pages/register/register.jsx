@@ -1,7 +1,7 @@
 import React from 'react'
 import './register.css'
 
-export const Register = () => {
+const Register = () => {
     return (
         <div className="login">
             <div className="loginWrapper">
@@ -23,3 +23,5 @@ export const Register = () => {
         </div>
     )
 }
+
+export default Register;
