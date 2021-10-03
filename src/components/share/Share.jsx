@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './share.css'
 import PermMediaIcon from '@mui/icons-material/PermMedia';
 import LabelIcon from '@mui/icons-material/Label';
 import RoomIcon from '@mui/icons-material/Room';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import { AuthContext } from '../../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 const Share = () => {
+
+    const {user} = useContext(AuthContext);
+
     return (
         <div className="share">
             <div className="shareWrapper">
                 <div className="shareTop">
-                    <img src="/assets/person/1.jpeg" alt="" className="shareProfileImg" />
+                    <Link to={`/profile/${user.username}`}>
+                    <img src={user.profilePicture || "/assets/person/noAvatar.png"} alt="" className="shareProfileImg" />
+                    </Link>
                     <input placeholder="What's in your mind ?" className="shareInput" />
                 </div>
                 <hr className="shareHr" />

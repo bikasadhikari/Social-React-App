@@ -1,16 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './post.css'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import axios from 'axios'
 import { format } from 'timeago.js'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../context/AuthContext'
 
 const Post = ({post}) => {
     const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLiked] = useState(false);
     const [user, setUser] = useState({});
+    const {user:currentUser} = useContext(AuthContext);
+
+    useEffect(() => {
+        setIsLiked(post.likes.includes(currentUser._id));
+    }, [currentUser._id, post.likes])
 
     const likeHandler = () => {
+        try {
+            axios.put(`/posts/${post._id}/like`, {userId: currentUser._id});
+        } catch (err) {
+            console.log(err);
+        }
         setLike(isLiked ? like-1 : like+1);
         setIsLiked(isLiked ? false : true);
     }
